@@ -3,9 +3,17 @@
 
 #define MAX_PROGRAM_SIZE 100
 
+typedef enum
+{
+    LOAD,
+    ADD,
+    PRINT,
+    HALT
+} Opcode;
+
 typedef struct
 {
-    char opcode[20];
+    Opcode opcode;
 
     int arg1;
 
@@ -14,7 +22,6 @@ typedef struct
 } Instruction;
 
 extern Instruction program[MAX_PROGRAM_SIZE];
-
 extern int program_size;
 
 #endif

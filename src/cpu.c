@@ -9,34 +9,30 @@ void cpu_run()
 {
     init_pc();
 
-    while(1)
+    while(get_pc() < program_size)
     {
         Instruction current = program[get_pc()];
 
         switch(current.opcode)
         {
             case LOAD:
-
-                execute_load(current.arg1,current.arg2);
-
+                execute_load(current.arg1, current.arg2);
                 break;
 
             case ADD:
-
-                execute_add(current.arg1,current.arg2);
-
+                execute_add(current.arg1, current.arg2);
                 break;
 
             case PRINT:
-
                 execute_print(current.arg1);
-
                 break;
 
             case HALT:
-
                 return;
 
+            default:
+                printf("Unknown instruction\n");
+                return;
         }
 
         increment_pc();

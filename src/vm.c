@@ -1,16 +1,15 @@
 #include <stdio.h>
 
 #include "vm.h"
-#include "registers.h"
 #include "parser.h"
+#include "cpu.h"
+#include "registers.h"
 
 void run_vm()
 {
     init_registers();
 
-    printf("========== VM START ==========\n");
+    load_program("programs/add.asm");
 
-    execute_program("programs/add.asm");
-
-    printf("========== VM END ==========\n");
+    cpu_run();
 }

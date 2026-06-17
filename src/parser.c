@@ -2,15 +2,15 @@
 #include <string.h>
 
 #include "parser.h"
-#include "instructions.h"
+#include "program.h"
 
-void execute_program(const char *filename)
+void load_program(const char *filename)
 {
-    FILE *file = fopen(filename,"r");
+    FILE *fp = fopen(filename, "r");
 
-    if(file==NULL)
+    if(fp == NULL)
     {
-        printf("Cannot open program.\n");
+        printf("Cannot open file.\n");
         return;
     }
 
@@ -20,37 +20,52 @@ void execute_program(const char *filename)
 
     int value;
 
-    while(1)
-    {
-        if(fscanf(file,"%s",opcode)!=1)
-            break;
+    program_size = 0;
 
+    while(fscanf(fp,"%s",opcode)==1)
+    {
         if(strcmp(opcode,"LOAD")==0)
         {
-            fscanf(file,"%s %d",reg1,&value);
+            fscanf(fp,"%s %d",reg1,&value);
 
-            execute_load(reg1[1]-'0',value);
+            program[program_size].opcode = LOAD;
+            program[program_size].arg1 = reg1[1]-'0';
+            program[program_size].arg2 = value;
+
+            program_size++;
         }
 
         else if(strcmp(opcode,"ADD")==0)
         {
-            fscanf(file,"%s %s",reg1,reg2);
+            fscanf(fp,"%s %s",reg1,reg2);
 
-            execute_add(reg1[1]-'0',reg2[1]-'0');
+            program[program_size].opcode = ADD;
+            program[program_size].arg1 = reg1[1]-'0';
+            program[program_size].arg2 = reg2[1]-'0';
+
+            program_size++;
         }
 
         else if(strcmp(opcode,"PRINT")==0)
         {
-            fscanf(file,"%s",reg1);
+            fscanf(fp,"%s",reg1);
 
-            execute_print(reg1[1]-'0');
+            program[program_size].opcode = PRINT;
+            program[program_size].arg1 = reg1[1]-'0';
+            program[program_size].arg2 = 0;
+
+            program_size++;
         }
 
         else if(strcmp(opcode,"HALT")==0)
         {
-            break;
+            program[program_size].opcode = HALT;
+            program[program_size].arg1 = 0;
+            program[program_size].arg2 = 0;
+
+            program_size++;
         }
     }
 
-    fclose(file);
+    fclose(fp);
 }
