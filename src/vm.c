@@ -3,7 +3,7 @@
 #include "cpu.h"
 #include "registers.h"
 #include "memory.h"
-
+#include "stack.h"   // <-- ADD THIS
 
 
 void run_vm()

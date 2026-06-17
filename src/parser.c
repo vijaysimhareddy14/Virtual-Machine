@@ -148,6 +148,21 @@ void load_program(const char *filename)
 
         program[program_size].arg2=0;
     }
+    else if(strcmp(opcode,"CALL")==0)
+{
+    fscanf(fp,"%d",&value);
+
+    program[program_size].opcode = CALL;
+    program[program_size].arg1 = value;
+    program[program_size].arg2 = 0;
+}
+
+    else if(strcmp(opcode,"RET")==0)
+    {
+        program[program_size].opcode = RET;
+        program[program_size].arg1 = 0;
+        program[program_size].arg2 = 0;
+    }
 
     program_size++;
 }

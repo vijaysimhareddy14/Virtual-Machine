@@ -18,6 +18,8 @@ typedef enum
     JNZ,
     PUSH,
     POP,
+    CALL,
+    RET,
     HALT
 } Opcode;
 

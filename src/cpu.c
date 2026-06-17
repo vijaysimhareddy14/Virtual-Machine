@@ -1,8 +1,10 @@
+#include <stdio.h>
 #include "cpu.h"
 #include "program.h"
 #include "instructions.h"
 #include "pc.h"
-#include "registers.h"
+#include "stack.h"
+#include "registers.h" 
 
 void cpu_run()
 {
@@ -76,6 +78,13 @@ void cpu_run()
             case POP:
                 execute_pop(current.arg1);
                 break;
+            case CALL:
+                push(get_pc() + 1);
+                set_pc(current.arg1);
+                continue;
+            case RET:
+                set_pc(pop());
+                continue;
         }
 
         increment_pc();
