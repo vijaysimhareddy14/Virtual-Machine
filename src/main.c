@@ -1,17 +1,23 @@
 #include <stdio.h>
-#include "memory.h"
-#include "registers.h"
+#include "pc.h"
 
 int main() {
 
-    init_memory();
-    init_registers();
+    init_pc();
 
-    set_register(0,5);
-    set_register(1,10);
+    printf("PC = %d\n", get_pc());
 
-    printf("R0 = %d\n",get_register(0));
-    printf("R1 = %d\n",get_register(1));
+    increment_pc();
+
+    printf("PC = %d\n", get_pc());
+
+    increment_pc();
+
+    printf("PC = %d\n", get_pc());
+
+    set_pc(20);
+
+    printf("PC = %d\n", get_pc());
 
     return 0;
 }
