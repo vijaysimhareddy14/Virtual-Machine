@@ -35,6 +35,21 @@ void cpu_run()
 
             case HALT:
                 return;
+            case SUB:
+                execute_sub(current.arg1,current.arg2);
+                break;
+
+            case MUL:
+                execute_mul(current.arg1,current.arg2);
+                break;
+
+            case DIVIDE:
+                execute_div(current.arg1,current.arg2);
+                break;
+
+            case JMP:
+                set_pc(current.arg1);
+                continue;
         }
 
         increment_pc();

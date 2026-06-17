@@ -75,6 +75,41 @@ void load_program(const char *filename)
         program[program_size].arg1 = 0;
         program[program_size].arg2 = 0;
     }
+    else if(strcmp(opcode,"SUB")==0)
+{
+    fscanf(fp,"%s %s",reg1,reg2);
+
+    program[program_size].opcode=SUB;
+    program[program_size].arg1=reg1[1]-'0';
+    program[program_size].arg2=reg2[1]-'0';
+}
+
+    else if(strcmp(opcode,"MUL")==0)
+    {
+        fscanf(fp,"%s %s",reg1,reg2);
+
+        program[program_size].opcode=MUL;
+        program[program_size].arg1=reg1[1]-'0';
+        program[program_size].arg2=reg2[1]-'0';
+    }
+
+    else if(strcmp(opcode,"DIV")==0)
+    {
+        fscanf(fp,"%s %s",reg1,reg2);
+
+        program[program_size].opcode=DIVIDE;
+        program[program_size].arg1=reg1[1]-'0';
+        program[program_size].arg2=reg2[1]-'0';
+    }
+
+    else if(strcmp(opcode,"JMP")==0)
+    {
+        fscanf(fp,"%d",&value);
+
+        program[program_size].opcode=JMP;
+        program[program_size].arg1=value;
+        program[program_size].arg2=0;
+    }
 
     program_size++;
 }

@@ -7,9 +7,13 @@ typedef enum
 {
     LOAD,
     ADD,
-    PRINT,
+    SUB,
+    MUL,
+    DIVIDE,
     STORE,
     LOADM,
+    PRINT,
+    JMP,
     HALT
 } Opcode;
 
