@@ -14,6 +14,8 @@ typedef enum
     LOADM,
     PRINT,
     JMP,
+    JZ,
+    JNZ,
     HALT
 } Opcode;
 

@@ -2,6 +2,7 @@
 #include "program.h"
 #include "instructions.h"
 #include "pc.h"
+#include "registers.h"
 
 void cpu_run()
 {
@@ -50,6 +51,25 @@ void cpu_run()
             case JMP:
                 set_pc(current.arg1);
                 continue;
+            case JZ:
+
+                if(get_register(0)==0)
+                {
+                    set_pc(current.arg1);
+                    continue;
+                }
+
+                break;
+
+            case JNZ:
+
+                if(get_register(0)!=0)
+                {
+                    set_pc(current.arg1);
+                    continue;
+                }
+
+                break;
         }
 
         increment_pc();

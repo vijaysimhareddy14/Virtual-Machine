@@ -110,6 +110,23 @@ void load_program(const char *filename)
         program[program_size].arg1=value;
         program[program_size].arg2=0;
     }
+    else if(strcmp(opcode,"JZ")==0)
+{
+    fscanf(fp,"%d",&value);
+
+    program[program_size].opcode = JZ;
+    program[program_size].arg1 = value;
+    program[program_size].arg2 = 0;
+}
+
+    else if(strcmp(opcode,"JNZ")==0)
+    {
+        fscanf(fp,"%d",&value);
+
+        program[program_size].opcode = JNZ;
+        program[program_size].arg1 = value;
+        program[program_size].arg2 = 0;
+    }
 
     program_size++;
 }
