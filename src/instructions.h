@@ -11,5 +11,8 @@ void execute_store(int reg,int address);
 void execute_loadm(int reg,int address);
 
 void execute_print(int reg);
+void execute_push(int reg);
+
+void execute_pop(int reg);
 
 #endif

@@ -127,6 +127,27 @@ void load_program(const char *filename)
         program[program_size].arg1 = value;
         program[program_size].arg2 = 0;
     }
+    else if(strcmp(opcode,"PUSH")==0)
+{
+    fscanf(fp,"%s",reg1);
+
+    program[program_size].opcode=PUSH;
+
+    program[program_size].arg1=reg1[1]-'0';
+
+    program[program_size].arg2=0;
+}
+
+    else if(strcmp(opcode,"POP")==0)
+    {
+        fscanf(fp,"%s",reg1);
+
+        program[program_size].opcode=POP;
+
+        program[program_size].arg1=reg1[1]-'0';
+
+        program[program_size].arg2=0;
+    }
 
     program_size++;
 }

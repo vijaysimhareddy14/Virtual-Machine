@@ -70,6 +70,12 @@ void cpu_run()
                 }
 
                 break;
+            case PUSH:
+                execute_push(current.arg1);
+                break;
+            case POP:
+                execute_pop(current.arg1);
+                break;
         }
 
         increment_pc();

@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include "stack.h"
 #include "instructions.h"
 #include "registers.h"
 #include "memory.h"
@@ -45,4 +45,13 @@ void execute_loadm(int reg,int address)
 void execute_print(int reg)
 {
     printf("%d\n",get_register(reg));
+}
+void execute_push(int reg)
+{
+    push(get_register(reg));
+}
+
+void execute_pop(int reg)
+{
+    set_register(reg,pop());
 }

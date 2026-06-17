@@ -16,6 +16,8 @@ typedef enum
     JMP,
     JZ,
     JNZ,
+    PUSH,
+    POP,
     HALT
 } Opcode;
 
