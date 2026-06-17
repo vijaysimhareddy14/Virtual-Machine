@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 #include "cpu.h"
 #include "program.h"
 #include "instructions.h"
@@ -16,11 +14,19 @@ void cpu_run()
         switch(current.opcode)
         {
             case LOAD:
-                execute_load(current.arg1, current.arg2);
+                execute_load(current.arg1,current.arg2);
                 break;
 
             case ADD:
-                execute_add(current.arg1, current.arg2);
+                execute_add(current.arg1,current.arg2);
+                break;
+
+            case STORE:
+                execute_store(current.arg1,current.arg2);
+                break;
+
+            case LOADM:
+                execute_loadm(current.arg1,current.arg2);
                 break;
 
             case PRINT:
@@ -28,10 +34,6 @@ void cpu_run()
                 break;
 
             case HALT:
-                return;
-
-            default:
-                printf("Unknown instruction\n");
                 return;
         }
 

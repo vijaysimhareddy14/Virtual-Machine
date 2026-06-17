@@ -8,6 +8,8 @@ typedef enum
     LOAD,
     ADD,
     PRINT,
+    STORE,
+    LOADM,
     HALT
 } Opcode;
 
@@ -22,6 +24,7 @@ typedef struct
 } Instruction;
 
 extern Instruction program[MAX_PROGRAM_SIZE];
+
 extern int program_size;
 
 #endif
