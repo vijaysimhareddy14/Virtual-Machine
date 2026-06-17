@@ -1,21 +1,16 @@
 #include <stdio.h>
+
 #include "vm.h"
-#include "pc.h"
+#include "registers.h"
+#include "parser.h"
 
-void run_vm() {
+void run_vm()
+{
+    init_registers();
 
-    init_pc();
+    printf("========== VM START ==========\n");
 
-    printf("========== Virtual Machine ==========\n");
+    execute_program("programs/add.asm");
 
-    while(get_pc() < 5){
-
-        printf("Executing instruction %d\n", get_pc());
-
-        increment_pc();
-
-    }
-
-    printf("========== VM Finished ==========\n");
-
+    printf("========== VM END ==========\n");
 }

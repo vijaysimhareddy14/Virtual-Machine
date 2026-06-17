@@ -1,9 +1,8 @@
 #include "vm.h"
 
-int main() {
-
+int main()
+{
     run_vm();
 
     return 0;
-
 }
